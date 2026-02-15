@@ -8,8 +8,6 @@
 # Terraform state files (VERY IMPORTANT to ignore)
 *.tfstate
 *.tfstate.*
-.terraform.lock.hcl
-crash.log
 
 # Terraform variable files (often contain secrets)
 #terraform.tfvars
