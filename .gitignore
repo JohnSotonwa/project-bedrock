@@ -1,0 +1,33 @@
+# =========================
+# Terraform
+# =========================
+
+# Terraform working directory
+.terraform/
+
+# Terraform state files (VERY IMPORTANT to ignore)
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+
+# Terraform variable files (often contain secrets)
+terraform.tfvars
+*.tfvars
+
+# Backup files
+*.tfbackup
+*.save
+
+# =========================
+# AWS CLI / Local files
+# =========================
+
+# AWS CLI installer
+awscliv2.zip
+
+# Local AWS credentials
+.aws/
+
+# Local extracted AWS CLI folder
+aws/
