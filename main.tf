@@ -4,7 +4,7 @@
 resource "aws_s3_bucket" "app_assets" {
   bucket = var.app_bucket_name
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_vpc" "project_vpc" {
 
   tags = {
     Name    = "project-bedrock-vpc"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = {
     Name    = "project-bedrock-igw"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name    = "project-bedrock-public-${count.index}"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
     "kubernetes.io/role/elb" = "1"
   }
 }
@@ -74,7 +74,7 @@ resource "aws_subnet" "private" {
 
   tags = {
     Name    = "project-bedrock-private-${count.index}"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
     "kubernetes.io/role/internal-elb" = "1"
   }
 }
@@ -92,7 +92,7 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name    = "project-bedrock-public-rt"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -109,7 +109,7 @@ resource "aws_route_table" "private" {
 
   tags = {
     Name    = "project-bedrock-private-rt"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -138,7 +138,7 @@ resource "aws_eip" "nat" {
   domain = "vpc"
 
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -151,7 +151,7 @@ resource "aws_nat_gateway" "nat" {
 
   tags = {
     Name    = "project-bedrock-nat"
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -168,7 +168,7 @@ resource "aws_eks_cluster" "eks" {
   }
 
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 
   depends_on = [aws_iam_role_policy_attachment.eks_cluster_AmazonEKSClusterPolicy]
@@ -192,7 +192,7 @@ resource "aws_iam_role" "eks_cluster_role" {
   })
 
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -261,6 +261,7 @@ resource "aws_eks_node_group" "bedrock_nodes" {
 
   tags = {
     Name = "project-bedrock-worker-node"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -271,7 +272,7 @@ resource "aws_iam_user" "bedrock_dev_view" {
   name = "bedrock-dev-view"
 
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -305,7 +306,7 @@ resource "aws_iam_role" "cloudwatch_role" {
   })
 
   tags = {
-    Project = "Bedrock"
+    Project = "barakat-2025-capstone"
   }
 }
 
@@ -325,6 +326,10 @@ resource "aws_eks_addon" "cloudwatch" {
   addon_name   = "amazon-cloudwatch-observability"
   addon_version = "v4.10.0-eksbuild.1"   
   service_account_role_arn = aws_iam_role.cloudwatch_role.arn
+
+  tags = {
+    Project = "barakat-2025-capstone"
+  }
 }
 
 # ==========================
