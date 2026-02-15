@@ -12,8 +12,8 @@
 crash.log
 
 # Terraform variable files (often contain secrets)
-terraform.tfvars
-*.tfvars
+#terraform.tfvars
+#*.tfvars
 
 # Backup files
 *.tfbackup
